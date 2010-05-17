@@ -1,14 +1,8 @@
 # check_webservice - a Nagios plugin for testing Webservices
 
-A CMS for small web sites and blogs, written in
-[Sinatra](http://www.sinatrarb.com/ "Sinatra").
+A small plugin written in Python for testing Webservices.
 
-Content can be written in
-[Markdown](http://daringfireball.net/projects/markdown/ "Daring Fireball:
-Markdown") or [Textile](http://textism.com/tools/textile/) and stored in text
-files (though you can also use Haml if you need to add some HTML to your
-pages). There's no database; write your content in your editor. Publish by
-pushing to a git repository.
+You can set HTTP Headers, choose between a GET or POST request, and check the response with one or more Regular Expressions.
 
 ## Installation
 
