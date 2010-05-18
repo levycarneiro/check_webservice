@@ -86,13 +86,11 @@ def send_request(server, path, verb, timeout, content={}, headers={}):
 		resp.close()
 	except URLError, e:
 		if hasattr(e, 'reason'):
-			print "Failed to reach the server"
-			print 'Reason: ', e.reason
-			# sys.exit (2)
+			print "CRIT: Failed to reach the server. Reason:", e.reason
+			sys.exit (2)
 		elif hasattr(e, 'code'):
-			print "Request failed"
-			print 'Code: ', e.code
-			# sys.exit (2)
+			print "CRIT: Request failed. Code:", e.code
+			sys.exit (2)
 
 	return data
 
@@ -153,6 +151,7 @@ if verbose:
 
 # Test if any or all of the matches are found in the response.
 matches_found = 0
+tests_failed = ""
 for test in match:
 
 	if verbose: print "Testing: " + test
@@ -163,6 +162,12 @@ for test in match:
 	if m != None:
 		matches_found+=1
 	else:
+
+		if tests_failed == "":
+			tests_failed += test
+		else:
+			tests_failed += " | " + test
+
 		if verbose: print "Test failed: " + test
 
 success = False
@@ -179,5 +184,5 @@ if success:
 	print "OK"
 	sys.exit(0)
 else:
-	print "CRIT"
+	print "CRIT: the following tests have failed: " + tests_failed
 	sys.exit(2)
