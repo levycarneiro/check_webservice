@@ -10,6 +10,7 @@
 # TODO
 # - better description of errors
 # - chained calls (a webservice provide some info needed to test a second webservice)
+# - http basic auth
 
 ###################################################
 ## Imports ########################################
